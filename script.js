@@ -1,22 +1,22 @@
-// Helper function to parse feet and fractional input
-function parseFeet(input) {
+// Helper function to parse inches and fractional input
+function parseInches(input) {
   const parts = input.trim().split(" ");
-  let feet = 0;
+  let inches = 0;
 
   if (parts.length === 2) {
-      feet += parseInt(parts[0], 10);
+      inches += parseInt(parts[0], 10);
       const fraction = parts[1].split("/");
-      feet += parseInt(fraction[0], 10) / parseInt(fraction[1], 10);
+      inches += parseInt(fraction[0], 10) / parseInt(fraction[1], 10);
   } else if (parts.length === 1) {
       const fraction = parts[0].split("/");
       if (fraction.length === 2) {
-          feet += parseInt(fraction[0], 10) / parseInt(fraction[1], 10);
+          inches += parseInt(fraction[0], 10) / parseInt(fraction[1], 10);
       } else {
-          feet += parseFloat(parts[0]);
+          inches += parseFloat(parts[0]);
       }
   }
 
-  return feet;
+  return inches;
 }
 
 function showImage(imageId) {
@@ -27,11 +27,11 @@ function showImage(imageId) {
 document.getElementById("calcForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
-  // Parse inputs as feet
-  const width = parseFeet(document.getElementById("wid").value);
-  const length = parseFeet(document.getElementById("len").value);
-  const diagonal = parseFeet(document.getElementById("diagonal").value);
-  const railDistance = parseFeet(document.getElementById("rails").value);
+  // Parse inputs as inches
+  const width = parseInches(document.getElementById("wid").value);
+  const length = parseInches(document.getElementById("len").value);
+  const diagonal = parseInches(document.getElementById("diagonal").value);
+  const railDistance = parseInches(document.getElementById("rails").value);
 
   // Calculate opposite angle using the law of cosines
   const calculatedAngle = (Math.acos((Math.pow(diagonal, 2) - Math.pow(width, 2) - Math.pow(length, 2)) / -(2 * width * length)) * 180) / Math.PI;
@@ -47,9 +47,9 @@ document.getElementById("calcForm").addEventListener("submit", function (event) 
       const shiftDistance = Math.tan(angleError * (Math.PI / 180)) * railDistance;
 
       if (shiftDistance > 0) {
-          adjustmentMessage = `Shift the left wheel forward by ${shiftDistance.toFixed(2)} feet or the right wheel backward by ${shiftDistance.toFixed(2)} feet.`;
+          adjustmentMessage = `Shift the left wheel forward by ${shiftDistance.toFixed(2)} inches or the right wheel backward by ${shiftDistance.toFixed(2)} inches.`;
       } else {
-          adjustmentMessage = `Shift the right wheel forward by ${Math.abs(shiftDistance).toFixed(2)} feet or the left wheel backward by ${Math.abs(shiftDistance).toFixed(2)} feet.`;
+          adjustmentMessage = `Shift the right wheel forward by ${Math.abs(shiftDistance).toFixed(2)} inches or the left wheel backward by ${Math.abs(shiftDistance).toFixed(2)} inches.`;
       }
   } else {
       adjustmentMessage = "The rig is properly calibrated.";
@@ -58,6 +58,6 @@ document.getElementById("calcForm").addEventListener("submit", function (event) 
   // Display results
   document.getElementById("op_angle").textContent = `Angle Opposite Long Diagonal: ${calculatedAngle.toFixed(2)}°`;
   document.getElementById("deg_out_of_square").textContent = `Angle Error: ${angleError.toFixed(2)}°`;
-  document.getElementById("expected_diagonal").textContent = `Expected Diagonal: ${expectedDiagonal.toFixed(2)} feet`;
+  document.getElementById("expected_diagonal").textContent = `Expected Diagonal: ${expectedDiagonal.toFixed(2)} inches`;
   document.getElementById("adjust_message").textContent = adjustmentMessage;
 });
