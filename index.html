@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cutting Machine Adjustment</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Cutting Machine Adjustment</h1>
+        <form id="calcForm" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+            <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
+                <label for="wid">Width (inches and fractions)
+                    <button type="button" class="info-button" onclick="showImage('wid-image')">?</button>
+                </label>
+                <img id="wid-image" class="info-image" src="img/wid.png" alt="Width Info Image">
+                <input type="text" id="wid" name="wid" placeholder="Enter width" required>
+                <!-- <select id="wid-x-or-y" name="wid-x-or-y">
+                    <option value="x">X</option>
+                    <option value="y">Y</option>
+                </select> -->
+            </div>
+
+            <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
+                <label for="len">Length (inches and fractions)
+                    <button type="button" class="info-button" onclick="showImage('len-image')">?</button>
+                </label>
+                <img id="len-image" class="info-image" src="img/len.png" alt="Length Info Image">
+                <input type="text" id="len" name="len" placeholder="Enter length" required>
+                <!-- <select id="len-x-or-y" name="len-x-or-y">
+                    <option value="x">X</option>
+                    <option value="y">Y</option>
+                </select> -->
+            </div>
+
+            <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
+                <label for="diagonal">Diagonal (inches and fractions)
+                    <button type="button" class="info-button" onclick="showImage('diagonal-image')">?</button>
+                </label>
+                <img id="diagonal-image" class="info-image" src="img/corners.png" alt="Diagonal Info Image">
+                <input type="text" id="diagonal" name="diagonal" placeholder="Enter diagonal" required>
+            </div>
+
+            <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
+                <label for="rails">Rails (inches and fractions)
+                    <button type="button" class="info-button" onclick="showImage('rails-image')">?</button>
+                </label>
+                <img id="rails-image" class="info-image" src="img/rails.png" alt="Rails Info Image">
+                <input type="text" id="rails" name="rails" placeholder="Enter rails" required>
+            </div>
+
+            <div style="flex-basis: 100%; text-align: center;">
+                <button type="submit" class="btn">Calculate</button>
+            </div>
+        </form>
+
+        <div class="results">
+            <p id="op_angle"></p>
+            <p id="deg_out_of_square"></p>
+            <p id="expected_diagonal"></p>
+            <bold id="adjust_message">Please input the data</bold>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
