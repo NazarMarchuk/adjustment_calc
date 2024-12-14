@@ -87,7 +87,7 @@ document.getElementById("calcForm").addEventListener("submit", function (event) 
         adjustmentMessage = `Move the right wheel forward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))} or the left wheel backward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))}.`;
     }
   } else {
-      adjustmentMessage = "The rig is properly calibrated.";
+      adjustmentMessage = "The machine is properly calibrated.";
   }
 
   // Display results
