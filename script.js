@@ -75,22 +75,22 @@ document.getElementById("calcForm").addEventListener("submit", function (event) 
   const expectedDiagonal = Math.sqrt(Math.pow(width, 2) + Math.pow(length, 2));
 
   let adjustmentMessage = "";
+  
+  const bigger_diagonal = document.getElementById("ur-ll-or-ul-lr").value;
 
   // Determine adjustments based on angle error and quadrilateral distortion
   if (Math.abs(angleError) > 0.01) { // Non-square threshold
       const shiftDistance = Math.tan(angleError * (Math.PI / 180)) * railDistance;
-      if (shiftDistance > 0) {
-        adjustmentMessage = `Shift the left wheel forward by ${decimalToInches(shiftDistance)} or the right wheel backward by ${decimalToInches(shiftDistance)}.`;
+      if (bigger_diagonal === 'ur-ll') {
+        adjustmentMessage = `Move the left wheel forward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))} or the right wheel backward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))}.`;
     } else {
-        adjustmentMessage = `Shift the right wheel forward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))} or the left wheel backward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))}.`;
+        adjustmentMessage = `Move the right wheel forward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))} or the left wheel backward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))}.`;
     }
   } else {
       adjustmentMessage = "The rig is properly calibrated.";
   }
 
   // Display results
-  document.getElementById("op_angle").textContent = `Angle Opposite Long Diagonal: ${calculatedAngle.toFixed(2)}°`;
-  document.getElementById("deg_out_of_square").textContent = `Angle Error: ${angleError.toFixed(2)}°`;
-  document.getElementById("expected_diagonal").textContent = `Expected Diagonal: ${expectedDiagonal.toFixed(2)} inches`;
+  document.getElementById("expected_diagonal").textContent = `Expected Diagonal: ${decimalToInches(expectedDiagonal.toFixed(2))} inches`;
   document.getElementById("adjust_message").textContent = adjustmentMessage;
 });

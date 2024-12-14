@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <h1>Cutting Machine Adjustment</h1>
+        <hr>
         <form id="calcForm" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
             <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
                 <label for="wid">Width (inches and fractions)
@@ -17,10 +18,6 @@
                 </label>
                 <img id="wid-image" class="info-image" src="img/wid.png" alt="Width Info Image">
                 <input type="text" id="wid" name="wid" placeholder="Enter width" required>
-                <!-- <select id="wid-x-or-y" name="wid-x-or-y">
-                    <option value="x">X</option>
-                    <option value="y">Y</option>
-                </select> -->
             </div>
 
             <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
@@ -29,10 +26,6 @@
                 </label>
                 <img id="len-image" class="info-image" src="img/len.png" alt="Length Info Image">
                 <input type="text" id="len" name="len" placeholder="Enter length" required>
-                <!-- <select id="len-x-or-y" name="len-x-or-y">
-                    <option value="x">X</option>
-                    <option value="y">Y</option>
-                </select> -->
             </div>
 
             <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
@@ -56,9 +49,9 @@
                     <button type="button" class="info-button" onclick="showImage('all-diagonals-image')">?</button>
                 </label>
                 <img id="all-diagonals-image" class="info-image" src="img/all_diagonals.png" alt="Diagonals Info Image">
-                <select id="ll-ur-or-lr-ul" name="ll-ur-or-lr-ul" style="min-width: 292px;">
-                    <option value="ll-ur">Lower Left to Upper Right</option>
-                    <option value="lr-ul">Lower Right to Upper Left</option>
+                <select id="ur-ll-or-ul-lr" name="ll-ur-or-lr-ul" style="min-width: 292px;">
+                    <option value="ur-ll">Upper Right to Lower Left</option>
+                    <option value="ul-lr">Upper Left to Lower Right</option>
                 </select>
             </div>
 
@@ -71,8 +64,6 @@
         </form>
 
         <div class="results">
-            <p id="op_angle"></p>
-            <p id="deg_out_of_square"></p>
             <p id="expected_diagonal"></p>
             <bold id="adjust_message">Please input the data</bold>
         </div>
