@@ -113,3 +113,44 @@ h1 {
 .info-button:hover {
     background-color: #bdbdbd;
 }
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #ffffff;
+    color: #343a40;
+    appearance: none;
+    cursor: pointer;
+}
+
+select:hover {
+    border-color: #bdbdbd;
+}
+
+select:focus {
+    outline: none;
+    border-color: #ea4826;
+    box-shadow: 0 0 4px rgba(234, 72, 38, 0.5);
+}
+
+.form-group input,
+.form-group select {
+    width: calc(100% - 20px); /* Matches the width calculation of the top div */
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #ffffff;
+    color: #343a40;
+}
+
+/* Focus style for inputs and dropdowns */
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #ea4826; /* Same focus color as requested */
+    box-shadow: 0 0 4px rgba(234, 72, 38, 0.5);
+}

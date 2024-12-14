@@ -24,6 +24,40 @@ function showImage(imageId) {
   image.style.display = image.style.display === 'block' ? 'none' : 'block';
 }
 
+function decimalToInches(decimal) {
+    if (decimal < 0) {
+        throw new Error("Input must be a non-negative number");
+    }
+
+    const inches = Math.floor(decimal); // Get the whole inches
+    const fraction = decimal - inches; // Get the fractional part
+    const fractionsOfInch = 16; // Precision to 1/16 of an inch
+    const fractionRounded = Math.round(fraction * fractionsOfInch); // Round to nearest 1/16
+
+    // Handle special cases where fractionRounded equals fractionsOfInch
+    if (fractionRounded === fractionsOfInch) {
+        return `${inches + 1}"`;
+    }
+
+    const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b)); // Helper function for greatest common divisor
+    const denominator = fractionsOfInch;
+    const numerator = fractionRounded;
+
+    // Reduce fraction
+    const divisor = gcd(numerator, denominator);
+    const simplifiedNumerator = numerator / divisor;
+    const simplifiedDenominator = denominator / divisor;
+
+    // Format the result
+    if (inches === 0 && simplifiedNumerator > 0) {
+        return `${simplifiedNumerator}/${simplifiedDenominator}"`; // Only fraction
+    } else if (simplifiedNumerator > 0) {
+        return `${inches} ${simplifiedNumerator}/${simplifiedDenominator}"`; // Whole inches and fraction
+    } else {
+        return `${inches}"`; // Only whole inches
+    }
+}
+
 document.getElementById("calcForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -47,10 +81,10 @@ document.getElementById("calcForm").addEventListener("submit", function (event) 
       const shiftDistance = Math.tan(angleError * (Math.PI / 180)) * railDistance;
 
       if (shiftDistance > 0) {
-          adjustmentMessage = `Shift the left wheel forward by ${shiftDistance.toFixed(2)} inches or the right wheel backward by ${shiftDistance.toFixed(2)} inches.`;
-      } else {
-          adjustmentMessage = `Shift the right wheel forward by ${Math.abs(shiftDistance).toFixed(2)} inches or the left wheel backward by ${Math.abs(shiftDistance).toFixed(2)} inches.`;
-      }
+        adjustmentMessage = `Shift the left wheel forward by ${decimalToInches(shiftDistance)} or the right wheel backward by ${decimalToInches(shiftDistance)}.`;
+    } else {
+        adjustmentMessage = `Shift the right wheel forward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))} or the left wheel backward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))}.`;
+    }
   } else {
       adjustmentMessage = "The rig is properly calibrated.";
   }
