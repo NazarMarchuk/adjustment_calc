@@ -79,7 +79,7 @@ document.getElementById("calcForm").addEventListener("submit", function (event) 
   const bigger_diagonal = document.getElementById("ur-ll-or-ul-lr").value;
 
   // Determine adjustments based on angle error and quadrilateral distortion
-  if (Math.abs(angleError) > 0.01) { // Non-square threshold
+  if (Math.abs(angleError) > 0.1) { // Non-square threshold
       const shiftDistance = Math.tan(angleError * (Math.PI / 180)) * railDistance;
       if (bigger_diagonal === 'ur-ll') {
         adjustmentMessage = `Move the left wheel forward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))} or the right wheel backward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))}.`;
