@@ -79,7 +79,6 @@ document.getElementById("calcForm").addEventListener("submit", function (event) 
   // Determine adjustments based on angle error and quadrilateral distortion
   if (Math.abs(angleError) > 0.01) { // Non-square threshold
       const shiftDistance = Math.tan(angleError * (Math.PI / 180)) * railDistance;
-
       if (shiftDistance > 0) {
         adjustmentMessage = `Shift the left wheel forward by ${decimalToInches(shiftDistance)} or the right wheel backward by ${decimalToInches(shiftDistance)}.`;
     } else {
