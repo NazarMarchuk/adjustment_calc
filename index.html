@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="img/icons/icon-192.png">
+
     <title>Cutting Machine Adjustment</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
     <style>
         .input-group {
             display: flex;
@@ -26,7 +31,7 @@
                 <label for="rails" style="margin-bottom: 5px;">Rails (inches and fractions)
                     <button type="button" class="info-button" onclick="showImage('rails-image')">?</button>
                 </label>
-                <img id="rails-image" class="info-image" src="img/rails.png" alt="Rails Info Image">
+                <img id="rails-image" class="info-image" src="img/info/rails.png" alt="Rails Info Image">
                 <input type="text" id="rails" name="rails" placeholder="Enter distance between the rails" style="width: 100%; box-sizing: border-box;" required>
             </div>
 
@@ -36,7 +41,7 @@
                 <label for="wid" style="margin-bottom: 5px;">Width (inches and fractions)
                     <button type="button" class="info-button" onclick="showImage('wid-image')">?</button>
                 </label>
-                <img id="wid-image" class="info-image" src="img/wid.png" alt="Width Info Image">
+                <img id="wid-image" class="info-image" src="img/info/wid.png" alt="Width Info Image">
                 <input type="text" id="wid" name="wid" placeholder="Enter test square width" required>
             </div>   
                     
@@ -44,7 +49,7 @@
                 <label for="len" style="margin-bottom: 5px;">Length (inches and fractions)
                     <button type="button" class="info-button" onclick="showImage('len-image')">?</button>
                 </label>
-                <img id="len-image" class="info-image" src="img/len.png" alt="Length Info Image">
+                <img id="len-image" class="info-image" src="img/info/len.png" alt="Length Info Image">
                 <input type="text" id="len" name="len" placeholder="Enter test square length" required>
                 
             </div>
@@ -55,8 +60,8 @@
                 <label for="diagonal" style="margin-bottom: 5px;">Diagonal (inches and fractions)
                     <button type="button" class="info-button" onclick="showImage('diagonal-image')">?</button>
                 </label>
-                <img id="diagonal-image" class="info-image" src="img/all_diagonals.png" alt="Diagonal Info Image">
-                <input type="text" id="diagonal" name="diagonal" placeholder="Enter measured diagonal (long or short)" style="width: 100%; box-sizing: border-box;" required>
+                <img id="diagonal-image" class="info-image" src="img/info/all_diagonals.png" alt="Diagonal Info Image">
+                <input type="text" id="diagonal" name="diagonal" placeholder="Enter measured diagonal" style="width: 100%; box-sizing: border-box;" required>
                 
                 <label for="ur-ll-or-ul-lr" style="margin-top: 5px; margin-bottom: 5px;">Indicate Diagonal Entered</label>
                 <select id="ur-ll-or-ul-lr" name="ll-ur-or-lr-ul" style="width: 100%; box-sizing: border-box;">

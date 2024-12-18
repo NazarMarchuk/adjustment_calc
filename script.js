@@ -57,6 +57,14 @@ function decimalToInches(decimal) {
     }
 }
 
+// Service Worker registration
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+        .then(() => console.log('Service Worker Registered'))
+        .catch(err => console.error('Service Worker Registration Failed:', err));
+}
+
+
 document.getElementById("calcForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
