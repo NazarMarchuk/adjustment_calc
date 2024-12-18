@@ -1,4 +1,3 @@
-// Helper function to parse inches and fractional input
 function parseInches(input) {
   const parts = input.trim().split(" ");
   let inches = 0;
@@ -39,7 +38,7 @@ function decimalToInches(decimal) {
         return `${inches + 1}"`;
     }
 
-    const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b)); // Helper function for greatest common divisor
+    const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b)); 
     const denominator = fractionsOfInch;
     const numerator = fractionRounded;
 
@@ -61,7 +60,6 @@ function decimalToInches(decimal) {
 document.getElementById("calcForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
-  // Parse inputs as inches
   const width = parseInches(document.getElementById("wid").value);
   const length = parseInches(document.getElementById("len").value);
   const diagonal = parseInches(document.getElementById("diagonal").value);
@@ -78,19 +76,18 @@ document.getElementById("calcForm").addEventListener("submit", function (event) 
   
   const bigger_diagonal = document.getElementById("ur-ll-or-ul-lr").value;
 
-  // Determine adjustments based on angle error and quadrilateral distortion
-  if (Math.abs(angleError) > 0.1) { // Non-square threshold
-      const shiftDistance = Math.tan(angleError * (Math.PI / 180)) * railDistance;
-      if (bigger_diagonal === 'ur-ll') {
-        adjustmentMessage = `Move the left wheel forward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))} or the right wheel backward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))}.`;
+  if (Math.abs(angleError) > 0.1) { 
+    let shiftDistance = Math.tan(angleError * (Math.PI / 180)) * railDistance;
+    shiftDistance = Math.abs(shiftDistance).toFixed(2);
+        if (bigger_diagonal === 'ur-ll') {
+        adjustmentMessage = `Move the left side forward by ${decimalToInches(shiftDistance)} (${shiftDistance}") or the right side backwards by ${decimalToInches(shiftDistance)} (${shiftDistance}").`;
     } else {
-        adjustmentMessage = `Move the right wheel forward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))} or the left wheel backward by ${decimalToInches(Math.abs(shiftDistance).toFixed(2))}.`;
+        adjustmentMessage = `Move the right side forward by ${decimalToInches(shiftDistance)} (${shiftDistance}") or the left side backwards by ${decimalToInches(shiftDistance)} (${shiftDistance}").`;
     }
   } else {
-      adjustmentMessage = "The machine is properly calibrated.";
+        adjustmentMessage = "The machine is properly calibrated.";
   }
 
-  // Display results
-  document.getElementById("expected_diagonal").textContent = `Expected Diagonal: ${decimalToInches(expectedDiagonal.toFixed(2))} inches`;
+  document.getElementById("expected_diagonal").textContent = `Expected Diagonal: ${decimalToInches(expectedDiagonal.toFixed(2))} (${expectedDiagonal.toFixed(2)}")`;
   document.getElementById("adjust_message").textContent = adjustmentMessage;
 });
