@@ -21,22 +21,45 @@ h1 {
     color: #ea4826;
 }
 
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, #ea4826, #ffcc80, #ea4826);
+    margin: 20px 0;
+}
+
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced spacing between fields */
+    display: flex;
+    flex-direction: column; /* Ensures labels are above inputs */
+    align-items: flex-start; /* Aligns labels and inputs consistently */
+}
+
+.input-pair {
+    display: flex;
+    gap: 10px; /* Space between width and length */
+    width: 100%;
+}
+
+.input-pair .input-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group label {
     display: block;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 3px; /* Consistent smaller spacing between label and input */
 }
 
 .form-group input {
-    width: calc(100% - 20px);
+    width: 100%; /* Standardized size for all text inputs */
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 5px;
     font-size: 14px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
 .form-group button {
@@ -47,16 +70,17 @@ h1 {
     padding: 8px 15px;
     cursor: pointer;
     font-size: 14px;
+    margin-top: 10px; /* Space above buttons, like info-button */
 }
 
 .form-group button:hover {
-    background-color: #ea4826;
+    background-color: #b51e00;
 }
 
 .info-image {
     display: none;
     margin-top: 10px;
-    width: 100%;
+    width: 50%;
     border: 1px solid #ced4da;
     border-radius: 5px;
 }
@@ -124,6 +148,7 @@ select {
     color: #343a40;
     appearance: none;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 select:hover {
@@ -138,13 +163,14 @@ select:focus {
 
 .form-group input,
 .form-group select {
-    width: calc(100% - 20px); /* Matches the width calculation of the top div */
+    width: 100%; /* Matches the width calculation of all inputs */
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 5px;
     font-size: 14px;
     background-color: #ffffff;
     color: #343a40;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
 /* Focus style for inputs and dropdowns */

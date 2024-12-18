@@ -5,60 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cutting Machine Adjustment</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
 
+        .input-group input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Cutting Machine Adjustment</h1>
-        <hr>
-        <form id="calcForm" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
-            <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
-                <label for="wid">Width (inches and fractions)
+        <form id="calcForm">
+
+            <div class="form-group">
+                <label for="rails" style="margin-bottom: 5px;">Rails (inches and fractions)
+                    <button type="button" class="info-button" onclick="showImage('rails-image')">?</button>
+                </label>
+                <img id="rails-image" class="info-image" src="img/rails.png" alt="Rails Info Image">
+                <input type="text" id="rails" name="rails" placeholder="Enter distance between the rails" style="width: 100%; box-sizing: border-box;" required>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+                <label for="wid" style="margin-bottom: 5px;">Width (inches and fractions)
                     <button type="button" class="info-button" onclick="showImage('wid-image')">?</button>
                 </label>
                 <img id="wid-image" class="info-image" src="img/wid.png" alt="Width Info Image">
                 <input type="text" id="wid" name="wid" placeholder="Enter test square width" required>
-            </div>
-
-            <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
-                <label for="len">Length (inches and fractions)
+            </div>   
+                    
+            <div class="form-group">  
+                <label for="len" style="margin-bottom: 5px;">Length (inches and fractions)
                     <button type="button" class="info-button" onclick="showImage('len-image')">?</button>
                 </label>
                 <img id="len-image" class="info-image" src="img/len.png" alt="Length Info Image">
                 <input type="text" id="len" name="len" placeholder="Enter test square length" required>
+                
             </div>
 
-            <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
-                <label for="diagonal">Diagonal (inches and fractions)
+            <hr>
+
+            <div class="form-group">
+                <label for="diagonal" style="margin-bottom: 5px;">Diagonal (inches and fractions)
                     <button type="button" class="info-button" onclick="showImage('diagonal-image')">?</button>
                 </label>
-                <img id="diagonal-image" class="info-image" src="img/corners.png" alt="Diagonal Info Image">
-                <input type="text" id="diagonal" name="diagonal" placeholder="Enter Upper Right to Lower Left diagonal" required>
-            </div>
-
-            <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
-                <label for="rails">Rails (inches and fractions)
-                    <button type="button" class="info-button" onclick="showImage('rails-image')">?</button>
-                </label>
-                <img id="rails-image" class="info-image" src="img/rails.png" alt="Rails Info Image">
-                <input type="text" id="rails" name="rails" placeholder="Enter distance between the rails" required>
-            </div>
-
-            <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
-                <label for="ll-ur-or-lr-ul">Select a Longer Diagonal
-                    <button type="button" class="info-button" onclick="showImage('all-diagonals-image')">?</button>
-                </label>
-                <img id="all-diagonals-image" class="info-image" src="img/all_diagonals.png" alt="Diagonals Info Image">
-                <select id="ur-ll-or-ul-lr" name="ll-ur-or-lr-ul" style="min-width: 292px;">
+                <img id="diagonal-image" class="info-image" src="img/all_diagonals.png" alt="Diagonal Info Image">
+                <input type="text" id="diagonal" name="diagonal" placeholder="Enter measured diagonal" style="width: 100%; box-sizing: border-box;" required>
+                
+                <label for="ur-ll-or-ul-lr" style="margin-top: 5px; margin-bottom: 5px;">Indicate Diagonal Entered</label>
+                <select id="ur-ll-or-ul-lr" name="ll-ur-or-lr-ul" style="width: 100%; box-sizing: border-box;">
                     <option value="ur-ll">Upper Right to Lower Left</option>
                     <option value="ul-lr">Upper Left to Lower Right</option>
                 </select>
             </div>
 
-            <div class="form-group island" style="flex: 1 1 calc(25% - 20px); min-width: 200px;">
-            </div>
+            <hr>
 
-            <div style="flex-basis: 100%; text-align: center;">
+            <div style="text-align: center; margin-top: 20px;">
                 <button type="submit" class="btn">Calculate</button>
             </div>
         </form>
