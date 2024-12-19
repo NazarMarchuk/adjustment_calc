@@ -73,10 +73,6 @@ hr {
     margin-top: 10px; /* Space above buttons, like info-button */
 }
 
-.form-group button:hover {
-    background-color: #b51e00;
-}
-
 .info-image {
     display: none;
     margin-top: 10px;
@@ -95,10 +91,6 @@ hr {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #b51e00;
 }
 
 .results {
@@ -135,7 +127,9 @@ hr {
 }
 
 .info-button:hover {
-    background-color: #bdbdbd;
+    transform: scale(1.25);
+    transition: transform 0.2s ease-in-out;
+    background-color: #b51e00;
 }
 
 select {
@@ -216,6 +210,7 @@ h1 {
 .btn:hover {
     transform: scale(1.05);
     transition: transform 0.2s ease-in-out;
+    background-color: #b51e00;
 }
 
 body.dark-mode {
