@@ -100,7 +100,7 @@ document.getElementById("calcForm").addEventListener("submit", function (event) 
     if (Math.abs(angleError) > 0.1) { 
         let shiftDistance = Math.tan(angleError * (Math.PI / 180)) * railDistance;
         shiftDistance = Math.abs(shiftDistance).toFixed(2);
-            if (bigger_diagonal === 'ur-ll') {
+            if (bigger_diagonal === 'ul-lr') {
             adjustmentMessage = `Move the left side forward by ${decimalToInches(shiftDistance)} (${shiftDistance}") or the right side backwards by ${decimalToInches(shiftDistance)} (${shiftDistance}").`;
         } else {
             adjustmentMessage = `Move the right side forward by ${decimalToInches(shiftDistance)} (${shiftDistance}") or the left side backwards by ${decimalToInches(shiftDistance)} (${shiftDistance}").`;
