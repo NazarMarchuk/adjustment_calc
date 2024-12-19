@@ -73,35 +73,36 @@ if ('serviceWorker' in navigator) {
 
 
 document.getElementById("calcForm").addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  const width = parseInches(document.getElementById("wid").value);
-  const length = parseInches(document.getElementById("len").value);
-  const diagonal = parseInches(document.getElementById("diagonal").value);
-  const railDistance = parseInches(document.getElementById("rails").value);
+    const width = parseInches(document.getElementById("wid").value);
+    const length = parseInches(document.getElementById("len").value);
+    const diagonal = parseInches(document.getElementById("diagonal").value);
+    const railDistance = parseInches(document.getElementById("rails").value);
 
-  // Calculate opposite angle using the law of cosines
-  const calculatedAngle = (Math.acos((Math.pow(diagonal, 2) - Math.pow(width, 2) - Math.pow(length, 2)) / -(2 * width * length)) * 180) / Math.PI;
-  const angleError = calculatedAngle - 90;
+    // Calculate opposite angle using the law of cosines
+    const calculatedAngle = (Math.acos((Math.pow(diagonal, 2) - Math.pow(width, 2) - Math.pow(length, 2)) / -(2 * width * length)) * 180) / Math.PI;
+    const angleError = calculatedAngle - 90;
 
-  // Calculate expected diagonal
-  const expectedDiagonal = Math.sqrt(Math.pow(width, 2) + Math.pow(length, 2));
+    // Calculate expected diagonal
+    const expectedDiagonal = Math.sqrt(Math.pow(width, 2) + Math.pow(length, 2));
 
-  let adjustmentMessage = "";
-  
-  const bigger_diagonal = document.getElementById("ur-ll-or-ul-lr").value;
+    let adjustmentMessage = "";
+    
+    const bigger_diagonal = document.getElementById("ur-ll-or-ul-lr").value;
 
-  if (Math.abs(angleError) > 0.1) { 
-    let shiftDistance = Math.tan(angleError * (Math.PI / 180)) * railDistance;
-    shiftDistance = Math.abs(shiftDistance).toFixed(2);
-        if (bigger_diagonal === 'ur-ll') {
-        adjustmentMessage = `Move the left side forward by ${decimalToInches(shiftDistance)} (${shiftDistance}") or the right side backwards by ${decimalToInches(shiftDistance)} (${shiftDistance}").`;
+    if (Math.abs(angleError) > 0.1) { 
+        let shiftDistance = Math.tan(angleError * (Math.PI / 180)) * railDistance;
+        shiftDistance = Math.abs(shiftDistance).toFixed(2);
+            if (bigger_diagonal === 'ur-ll') {
+            adjustmentMessage = `Move the left side forward by ${decimalToInches(shiftDistance)} (${shiftDistance}") or the right side backwards by ${decimalToInches(shiftDistance)} (${shiftDistance}").`;
+        } else {
+            adjustmentMessage = `Move the right side forward by ${decimalToInches(shiftDistance)} (${shiftDistance}") or the left side backwards by ${decimalToInches(shiftDistance)} (${shiftDistance}").`;
+        }
     } else {
-        adjustmentMessage = `Move the right side forward by ${decimalToInches(shiftDistance)} (${shiftDistance}") or the left side backwards by ${decimalToInches(shiftDistance)} (${shiftDistance}").`;
+            adjustmentMessage = "The machine is properly calibrated.";
     }
-  } else {
-        adjustmentMessage = "The machine is properly calibrated.";
-  }
 
-  document.getElementById("expected_diagonal").textContent = `Expected Diagonal: ${decimalToInches(expectedDiagonal.toFixed(2))} (${expectedDiagonal.toFixed(2)}")`;
-  document.getElementById("adjust_message").textContent = adjustmentMessage;
+    document.getElementById("expected_diagonal").textContent = `Expected Diagonal: ${decimalToInches(expectedDiagonal.toFixed(2))} (${expectedDiagonal.toFixed(2)}")`;
+    document.getElementById("adjust_message").textContent = adjustmentMessage;
 });
