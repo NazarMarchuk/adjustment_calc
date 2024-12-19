@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cutting-machine-v2';
+const CACHE_NAME = 'cutting-machine-v3';
 const urlsToCache = [
     './',
     './index.html',
