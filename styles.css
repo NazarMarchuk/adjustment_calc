@@ -180,3 +180,45 @@ select:focus {
     border-color: #ea4826; /* Same focus color as requested */
     box-shadow: 0 0 4px rgba(234, 72, 38, 0.5);
 }
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 20px auto;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .btn {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+.btn {
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+h1 {
+    color: #ff5722;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
