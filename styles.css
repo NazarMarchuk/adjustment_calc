@@ -58,7 +58,7 @@ hr {
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 15px;
     box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
@@ -167,7 +167,7 @@ select:focus {
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 15px;
     background-color: #ffffff;
     color: #343a40;
     box-sizing: border-box; /* Ensures padding doesn't affect width */
