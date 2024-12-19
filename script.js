@@ -64,6 +64,7 @@ if ('serviceWorker' in navigator) {
         .catch(err => console.error('Service Worker Registration Failed:', err));
 }
 
+<<<<<<< HEAD
 // Smooth scroll for mobile version
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -73,6 +74,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+=======
+>>>>>>> main
 
 document.getElementById("calcForm").addEventListener("submit", function (event) {
   event.preventDefault();
