@@ -73,7 +73,6 @@ if ('serviceWorker' in navigator) {
 
 
 document.getElementById("calcForm").addEventListener("submit", function (event) {
-  event.preventDefault();
 
   const width = parseInches(document.getElementById("wid").value);
   const length = parseInches(document.getElementById("len").value);
