@@ -20,8 +20,8 @@ function parseInches(input) {
 
 function showImage(imageId) {
     const image = document.getElementById(imageId);
-    image.classList.toggle('visible');
-}
+    image.style.display = image.style.display === 'block' ? 'none' : 'block';
+  }
 
 function decimalToInches(decimal) {
     if (decimal < 0) {
