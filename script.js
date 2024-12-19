@@ -19,8 +19,8 @@ function parseInches(input) {
 }
 
 function showImage(imageId) {
-  const image = document.getElementById(imageId);
-  image.style.display = image.style.display === 'block' ? 'none' : 'block';
+    const image = document.getElementById(imageId);
+    image.classList.toggle('visible');
 }
 
 function decimalToInches(decimal) {
@@ -64,6 +64,18 @@ if ('serviceWorker' in navigator) {
         .catch(err => console.error('Service Worker Registration Failed:', err));
 }
 
+<<<<<<< HEAD
+// Smooth scroll for mobile version
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+=======
+>>>>>>> main
 
 document.getElementById("calcForm").addEventListener("submit", function (event) {
   event.preventDefault();
