@@ -92,15 +92,16 @@ document.getElementById("calcForm").addEventListener("submit", function (event) 
 
     // Calculate expected diagonal
     const expectedDiagonal = Math.sqrt(Math.pow(width, 2) + Math.pow(length, 2));
+    const isExpectedBigger = expectedDiagonal > diagonal;
 
     let adjustmentMessage = "";
     
-    const bigger_diagonal = document.getElementById("ur-ll-or-ul-lr").value;
+    const chosenDiagonal = document.getElementById("ur-ll-or-ul-lr").value;
 
     if (Math.abs(angleError) > 0.1) { 
         let shiftDistance = Math.tan(angleError * (Math.PI / 180)) * railDistance;
         shiftDistance = Math.abs(shiftDistance).toFixed(2);
-            if (bigger_diagonal === 'ul-lr') {
+            if ((chosenDiagonal === 'ul-lr' & isExpectedBigger) || (chosenDiagonal === 'ur-ll' & !isExpectedBigger)) {
             adjustmentMessage = `Move the left side forward by ${decimalToInches(shiftDistance)} (${shiftDistance}") or the right side backwards by ${decimalToInches(shiftDistance)} (${shiftDistance}").`;
         } else {
             adjustmentMessage = `Move the right side forward by ${decimalToInches(shiftDistance)} (${shiftDistance}") or the left side backwards by ${decimalToInches(shiftDistance)} (${shiftDistance}").`;
